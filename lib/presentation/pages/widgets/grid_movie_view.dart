@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:stage_ott/core/extensions/context.ext.dart';
 import 'package:stage_ott/core/utils/app_env.dart';
 import 'package:stage_ott/domain/entities/movie_entity.dart';
+
+import '../../../core/utils/app_router.dart';
 
 class GridMovieView extends StatelessWidget {
   final List<MovieEntity> movies;
@@ -34,9 +37,10 @@ class _MovieCard extends StatelessWidget {
     String imageUrl = '${AppEnv.tmdbImageBasePath}${movie.posterPath}';
 
     return GestureDetector(
-      onTap: () {
-        // Handle movie click
-      },
+      onTap: () => context.push(
+        AppRoutes.movieDetail,
+        extra: movie,
+      ),
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

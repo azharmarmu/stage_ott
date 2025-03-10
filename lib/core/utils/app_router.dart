@@ -15,7 +15,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case AppRoutes.movieDetail:
       return MaterialPageRoute(
-        builder: (_) => MovieDetailedPage(movieEntity: args),
+        builder: (_) => MovieDetailedPage(movie: args),
         settings: const RouteSettings(name: AppRoutes.movieDetail),
       );
 

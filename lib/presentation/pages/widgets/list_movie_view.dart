@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stage_ott/core/extensions/context.ext.dart';
+import 'package:stage_ott/core/extensions/string_ext.dart';
+import 'package:stage_ott/core/utils/app_router.dart';
 import 'package:stage_ott/domain/entities/movie_entity.dart';
 
 import '../../../core/utils/app_env.dart';
@@ -30,12 +33,14 @@ class _MovieCard extends StatelessWidget {
     String imageUrl = '${AppEnv.tmdbImageBasePath}${movie.posterPath}';
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () => context.push(
+        AppRoutes.movieDetail,
+        extra: movie,
+      ),
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
@@ -54,12 +59,23 @@ class _MovieCard extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     movie.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    movie.releaseDate.convertToDate(),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 12.sp,
+                    ),
                   )
                 ],
               ),

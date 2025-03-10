@@ -6,6 +6,7 @@ class MovieEntity extends Equatable {
   final String posterPath;
   final String overview;
   final double popularity;
+  final String releaseDate;
 
   const MovieEntity({
     required this.id,
@@ -13,6 +14,7 @@ class MovieEntity extends Equatable {
     required this.posterPath,
     required this.overview,
     required this.popularity,
+    required this.releaseDate,
   });
 
   Map<String, dynamic> toJson() {

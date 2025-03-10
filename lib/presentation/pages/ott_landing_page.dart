@@ -15,7 +15,7 @@ class OTTLandingPage extends StatelessWidget {
     final movieCubit = locator.get<MovieCubit>();
     return BaseTemplate(
       appBar: AppBar(
-        title: Text('Movies'),
+        title: Text('Now Playing'),
         actions: [
           IconButton(
             onPressed: () => movieCubit.switchMovieViewType(),
