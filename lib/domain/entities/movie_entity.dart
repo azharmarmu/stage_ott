@@ -1,16 +1,18 @@
 import 'package:equatable/equatable.dart';
 
 class MovieEntity extends Equatable {
-  final String id;
-  final String? title;
-  final bool posterPath;
-  final bool overview;
+  final int id;
+  final String title;
+  final String posterPath;
+  final String overview;
+  final double popularity;
 
   const MovieEntity({
     required this.id,
     required this.title,
     required this.posterPath,
     required this.overview,
+    required this.popularity,
   });
 
   Map<String, dynamic> toJson() {
@@ -19,9 +21,16 @@ class MovieEntity extends Equatable {
       'title': title,
       'poster_path': posterPath,
       'overview': overview,
+      'popularity': popularity,
     };
   }
 
   @override
-  List<Object?> get props => [id, title, posterPath, overview];
+  List<Object?> get props => [
+        id,
+        title,
+        posterPath,
+        overview,
+        popularity,
+      ];
 }

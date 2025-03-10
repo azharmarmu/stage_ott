@@ -21,9 +21,9 @@ class MoviesDSImpl extends MoviesDS {
       method: Method.get,
     );
 
-    if (res != null && res['success']) {
+    if (res != null) {
       final model = List<MovieModel>.from(
-        res['data'].map(
+        res['results'].map(
           (e) => MovieModel.fromJson(e),
         ),
       );
